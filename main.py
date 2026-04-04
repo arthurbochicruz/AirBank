@@ -1,4 +1,4 @@
-from function.add import reset_error, error_function, age_calculator, line_divider, registration_verification_holder, registration_verification_age, registration_verification_cpf
+from function.add import age_calculator, line_divider, registration_verification_holder, registration_verification_age, registration_verification_cpf
 import createBank
 
 class User:
@@ -22,31 +22,36 @@ while True:
     AdminRespost = input('Quer cadastrar uma nova conta[S/N]: ').upper()
     if AdminRespost == "S":
         while True:
-            reset_error()
+            
             titular = input('Cadastre um usuario: ')
             titular = registration_verification_holder(titular)
 
-            idade = int(input('Digite o ano de nascimento do usuario: '))    
-            idade_real = age_calculator(idade)
-            idade = registration_verification_age(idade)
+            idade = str(input('Digite o ano de nascimento do usuario: '))    
+            idade_real, errorAge = age_calculator(idade)
+            idade_real, condicion, insufficientAgeError = registration_verification_age(idade_real)
+            print(condicion)
 
             cpf = str(input('Digite seu CPF: '))
             cpf = registration_verification_cpf(cpf)
             saldo = 1000
 
-            user = User(titular, idade_real, saldo, cpf)
-            if error_function() < 0 or None in (titular, idade_real, idade, cpf):
-                print('\nDIGITE CORRETAMENTE!\n')
+            if errorAge:
+                print(idade_real)
+
+            elif insufficientAgeError:
+                print(idade_real)
+
             else:
+                user = User(titular, idade_real, saldo, cpf)
                 break
         break
-
-    elif AdminRespost != "S" and AdminRespost != "N":
-        print('Erro digite corretamente!')
-
-    else:
+    
+    if AdminRespost == "N":
         print('Ok você esta logado na conta Admin do banco!')
         break
+    elif AdminRespost != "S" and AdminRespost != "N":
+        print('Erro digite corretamente!')
+        
 
 print('Seu saldo é de R$ 1,000.00 reais \n')
 line_divider()
