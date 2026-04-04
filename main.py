@@ -26,19 +26,27 @@ while True:
             titular = input('Cadastre um usuario: ')
             titular = registration_verification_holder(titular)
 
-            idade = str(input('Digite o ano de nascimento do usuario: '))    
-            idade_real, errorAge = age_calculator(idade)
-            idade_real, condicion, insufficientAgeError = registration_verification_age(idade_real)
-            print(condicion)
+            while True:
+                idade = str(input('Digite o ano de nascimento do usuario: '))    
+                idade_real, errorAge = age_calculator(idade)
+                if errorAge == True:
+                    print(idade_real)
+                else:
+                    idade_real, condicion, insufficientAgeError = registration_verification_age(idade_real)
+                    if insufficientAgeError == True:
+                        print(condicion)
+                    else:
+                        print(condicion)
+                        break    
 
             cpf = str(input('Digite seu CPF: '))
             cpf = registration_verification_cpf(cpf)
             saldo = 1000
 
-            if errorAge:
-                print(idade_real)
+            
 
-            elif insufficientAgeError:
+            
+            if insufficientAgeError == True:
                 print(idade_real)
 
             else:
