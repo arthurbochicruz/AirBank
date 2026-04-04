@@ -22,12 +22,16 @@ while True:
     AdminRespost = input('Quer cadastrar uma nova conta[S/N]: ').upper()
     if AdminRespost == "S":
         while True:
-            
-            titular = input('Cadastre um usuario: ')
-            titular = registration_verification_holder(titular)
+            while True:
+                titular = input('Nome de usuário: ')
+                titular, msg, holderError = registration_verification_holder(titular)
+                if holderError == True:
+                    print(msg)
+                else:
+                    break
 
             while True:
-                idade = str(input('Digite o ano de nascimento do usuario: '))    
+                idade = str(input('Ano de nascimento do usuario: '))    
                 idade_real, errorAge = age_calculator(idade)
                 if errorAge == True:
                     print(idade_real)

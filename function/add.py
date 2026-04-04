@@ -5,12 +5,17 @@ def line_divider():
     print('-=' * 30)
 
 def registration_verification_holder(registration_verification_value_holder):
+    if len(registration_verification_value_holder) < 3:
+                return registration_verification_value_holder, 'O nome do titular tem que ser no minimo 3 letras', True
 
-    if registration_verification_value_holder.isalpha():
-        return registration_verification_value_holder
+    elif len(registration_verification_value_holder) > 35:
+            return registration_verification_value_holder, 'Desculpe numero de letras é muito grande aceitamos no máximo 35 letras', True
+            
+    elif registration_verification_value_holder.isalpha():
+        return registration_verification_value_holder, 'Nome correto', False
+                
     else:
-        
-        print('Digite corretamente!')
+        return registration_verification_value_holder, 'Digite o titular corretamente', True
 
 def age_calculator(date_said):
     try:
