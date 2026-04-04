@@ -109,7 +109,7 @@ elif response == 5:
                 break 
             except ValueError:
                 print('[ERROR: Valor Invalido] Não é possivel digitar este valor!')
-
+                
 elif response != 1 and response != 2 and response != 3 and response != 4 and response != 5:
     print('Digite corretamentea sua escolha!')
 else:
