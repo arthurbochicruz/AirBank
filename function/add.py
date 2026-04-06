@@ -55,8 +55,15 @@ def registration_verification_age(registration_verification_value_age):
     else:
         return None, "Digite apenas números!", True
 
+
+
+
+
+
+
 def registration_verification_cpf(registration_verification_value_cpf):
     if registration_verification_value_cpf.isdigit():
-        return registration_verification_value_cpf
+        if len(registration_verification_value_cpf) != 11:
+            return f"{registration_verification_value_cpf[:3]}.{registration_verification_value_cpf[3:6]}.{registration_verification_value_cpf[6:9]}-{registration_verification_value_cpf[9:]}"
     else:
         return "Digite corretamente o CPF!"

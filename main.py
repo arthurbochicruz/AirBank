@@ -41,11 +41,12 @@ while True:
                         print(condicion)
                     else:
                         print(condicion)
-                        break    
+                        break
 
-            cpf = str(input('Digite seu CPF: '))
-            cpf = registration_verification_cpf(cpf)
-            saldo = 1000
+            
+                cpf = str(input('Digite seu CPF: '))
+                cpf = registration_verification_cpf(cpf)
+                saldo = 1000
 
             
 
