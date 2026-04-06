@@ -43,14 +43,16 @@ while True:
                         print(condicion)
                         break
 
-            
+            while True:
                 cpf = str(input('Digite seu CPF: '))
-                cpf = registration_verification_cpf(cpf)
-                saldo = 1000
+                cpf, errorCPF = registration_verification_cpf(cpf)
 
-            
-
-            
+                if errorCPF == True:
+                    print(cpf)
+                else:
+                    break
+            saldo = 1000
+          
             if insufficientAgeError == True:
                 print(idade_real)
 
@@ -65,7 +67,6 @@ while True:
     elif AdminRespost != "S" and AdminRespost != "N":
         print('Erro digite corretamente!')
         
-
 print('Seu saldo é de R$ 1,000.00 reais \n')
 line_divider()
 print("""
